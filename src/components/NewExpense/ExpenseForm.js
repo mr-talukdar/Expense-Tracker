@@ -51,13 +51,17 @@ const ExpenseForm = (props) => {
     event.preventDefault();
     const taskData={
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount, //to change to integer
       date: new Date(enteredDate)
     }
     props.onExpenseData(taskData);
     setEnteredAmount('');
     setEnteredTitle('');
     setEnteredDate('');
+  }
+
+  const onCancelHandler=()=>{
+    props.cancel();
   }
 
   return (
@@ -90,6 +94,7 @@ const ExpenseForm = (props) => {
       </div>
       <div className="new-expense__actions">
         <button type="submit">Add Expense</button>
+        <button onClick={onCancelHandler}>Cancel</button>
       </div>
     </form>
   );

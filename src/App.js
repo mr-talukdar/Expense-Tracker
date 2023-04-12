@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import Expenses from "./components/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
@@ -37,9 +38,14 @@ function App() {
     })
     
   };
+  
+  useEffect(()=>{
+    document.title="Expense Tracker";
+  },[]);
 
   return (
     <div>
+      
       <NewExpense onAddExpense={AddExpenseHandler} />
       <Expenses items={expenses} />
     </div>
